@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dfi03h5xsiq5u"]
+
+[node name="ColorPicker" type="Control" unique_id=1599642648]
+layout_mode = 3
+anchor_right = 0.007
+anchor_bottom = 0.012
+offset_right = -8.064
+offset_bottom = -7.776
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="." unique_id=2096474448]
+layout_mode = 0
+offset_right = 118.0
+offset_bottom = 118.0

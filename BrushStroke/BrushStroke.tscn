@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dy1jj3hi5mv5d"]
+
+[ext_resource type="Script" uid="uid://051fhoj83q2f" path="res://BrushStroke/brush_stroke.gd" id="1_xjopp"]
+
+[node name="BrushStroke" type="Node2D" unique_id=980785867]
+script = ExtResource("1_xjopp")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1044071404]
+default_color = Color(0, 0, 0, 1)
+antialiased = true

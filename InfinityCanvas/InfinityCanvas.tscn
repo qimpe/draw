@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c3y6bo2uxjlwb"]
+
+[ext_resource type="Script" uid="uid://dyho7vrtedqgb" path="res://InfinityCanvas/canvas.gd" id="1_6tquf"]
+[ext_resource type="Script" uid="uid://dw0b7up1rknkn" path="res://InfinityCanvas/camera_2d.gd" id="2_ac1ut"]
+[ext_resource type="Script" uid="uid://bp6sqm4gx1ujv" path="res://InfinityCanvas/infinity_canvas_grid.gd" id="3_71mc4"]
+
+[node name="Canvas" type="SubViewportContainer" unique_id=1010356068]
+script = ExtResource("1_6tquf")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=14621275]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport" unique_id=91586172]
+anchor_mode = 0
+script = ExtResource("2_ac1ut")
+
+[node name="Strokes" type="Node2D" parent="SubViewport" unique_id=1566953950]
+
+[node name="Grid" type="Node2D" parent="SubViewport" unique_id=1671717999]
+script = ExtResource("3_71mc4")
+camera_path = NodePath("../Camera2D")

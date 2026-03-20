@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bxuatp00wptt3"]
+
+[ext_resource type="PackedScene" uid="uid://c3y6bo2uxjlwb" path="res://InfinityCanvas/InfinityCanvas.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://pp88ak3kt0i0" path="res://UI/components/Panel.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cdyx568q08ehl" path="res://UI/components/Sliders.tscn" id="3_h2yge"]
+
+[node name="Main" type="Control" unique_id=217317323]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Canvas" parent="." unique_id=1010356068 instance=ExtResource("1_ig7tw")]
+layout_mode = 0
+
+[node name="Panel" parent="." unique_id=378540673 instance=ExtResource("2_0xm2m")]
+layout_mode = 1
+anchors_preset = 10
+anchor_bottom = 0.0
+offset_bottom = 40.0
+
+[node name="Sliders" parent="." unique_id=788542311 instance=ExtResource("3_h2yge")]
+layout_mode = 1

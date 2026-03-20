@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://pp88ak3kt0i0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cf3cp"]
+bg_color = Color(0.10166524, 0.10166524, 0.1016652, 1)
+
+[node name="Panel" type="Panel" unique_id=378540673]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.074
+offset_bottom = 0.048000336
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cf3cp")
