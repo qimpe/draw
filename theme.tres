@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://fo4qjt6mwdgo"]
+
+[ext_resource type="FontFile" uid="uid://7gtou8tq3rsr" path="res://assets/fonts/Farabee Black.ttf" id="1_e1x85"]
+
+[resource]
+default_font = ExtResource("1_e1x85")
+Button/colors/icon_hover_color = Color(0.23679447, 0.38415992, 1, 1)
+Button/colors/icon_normal_color = Color(0, 0, 0, 1)
+Button/colors/icon_pressed_color = Color(0.23529412, 0.38431373, 1, 1)
+Button/icons/icon = null

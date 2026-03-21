@@ -117,6 +117,11 @@ func load_from_json(path: String):
 			new_stroke.add_point(pos) # Не забудь, что add_point должен добавлять и в массив, и в Line2D
 
 
+
+
+
+
+
 """func _process_event(event: InputEvent) -> void:
 	if !get_viewport().is_input_handled():
 		_camera.tool_event(event)

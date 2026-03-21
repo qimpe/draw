@@ -46,7 +46,8 @@ func _start_stroke(pos: Vector2, strokes_node: Node):
 	current_stroke.size=current_brush_size
 	current_stroke.color=current_brush_color
 	strokes_node.add_child(current_stroke)
-	current_stroke.add_point(pos)
+	current_stroke.add_point(pos)#* Its a dot
+	current_stroke.add_point(pos + Vector2(0.1, 0))
 
 func _process_drawing(pos: Vector2):
 	if not current_stroke: return

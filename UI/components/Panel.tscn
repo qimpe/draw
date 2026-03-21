@@ -1,16 +1,26 @@
 [gd_scene format=3 uid="uid://pp88ak3kt0i0"]
 
-[ext_resource type="Texture2D" uid="uid://p43tucvpq4uk" path="res://assets/icons/brush.svg" id="1_3xis0"]
+[ext_resource type="Texture2D" uid="uid://cuiiex4lmejgj" path="res://assets/icons/brush.svg" id="1_3xis0"]
 [ext_resource type="Script" uid="uid://sjcns71xxjb" path="res://UI/components/panel.gd" id="1_8rfca"]
 [ext_resource type="Script" uid="uid://c8v2se3tey7ac" path="res://UI/components/color_picker_button.gd" id="1_i2ddy"]
-[ext_resource type="Texture2D" uid="uid://ok1k2lfeq0j7" path="res://assets/icons/menu.svg" id="2_37le6"]
-[ext_resource type="Texture2D" uid="uid://b8twk8buatdpc" path="res://assets/icons/eraser.svg" id="2_ig0d6"]
 [ext_resource type="Texture2D" uid="uid://ijalf1n4lk4u" path="res://assets/icons/color.svg" id="3_jxxd6"]
-[ext_resource type="Texture2D" uid="uid://dylv8jfnidcop" path="res://assets/icons/undo.svg" id="5_vjrvq"]
-[ext_resource type="Texture2D" uid="uid://cywwm7yl6kidm" path="res://assets/icons/redo.svg" id="6_rdy2v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cf3cp"]
 bg_color = Color(0.10166524, 0.10166524, 0.1016652, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_jxxd6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ig0d6"]
+load_path = "res://.godot/imported/menu.svg-59db10be0368b42c7e33f9f74c374b3a.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8rfca"]
+load_path = "res://.godot/imported/eraser.svg-6a3e51f9ddc485901c0aa04826d953f5.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_37le6"]
+load_path = "res://.godot/imported/undo.svg-8e39613a5ed2624e54d767b85e6b7dc0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vjrvq"]
+load_path = "res://.godot/imported/redo.svg-3f978da4a242cfabee4c9d3cfb8b5e18.ctex"
 
 [node name="Panel" type="Panel" unique_id=378540673]
 anchors_preset = -1
@@ -50,7 +60,9 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("2_37le6")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jxxd6")
+icon = SubResource("CompressedTexture2D_ig0d6")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -60,6 +72,8 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jxxd6")
 icon = ExtResource("1_3xis0")
 flat = true
 icon_alignment = 1
@@ -70,7 +84,9 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("2_ig0d6")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jxxd6")
+icon = SubResource("CompressedTexture2D_8rfca")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -80,6 +96,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+button_group = SubResource("ButtonGroup_jxxd6")
 icon = ExtResource("3_jxxd6")
 flat = true
 icon_alignment = 1
@@ -91,7 +108,8 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("5_vjrvq")
+toggle_mode = true
+icon = SubResource("CompressedTexture2D_37le6")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -101,7 +119,8 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("6_rdy2v")
+toggle_mode = true
+icon = SubResource("CompressedTexture2D_vjrvq")
 flat = true
 icon_alignment = 1
 expand_icon = true

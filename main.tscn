@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6jm2k4nqqf5w" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c3y6bo2uxjlwb" path="res://InfinityCanvas/InfinityCanvas.tscn" id="1_ig7tw"]
+[ext_resource type="Theme" uid="uid://fo4qjt6mwdgo" path="res://theme.tres" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://pp88ak3kt0i0" path="res://UI/components/Panel.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cdyx568q08ehl" path="res://UI/components/Sliders.tscn" id="3_h2yge"]
 
@@ -12,10 +13,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_lquwl")
 script = ExtResource("1_1bvp3")
 
 [node name="Canvas" parent="." unique_id=1010356068 instance=ExtResource("1_ig7tw")]
 layout_mode = 1
+theme = ExtResource("1_lquwl")
 
 [node name="Panel" parent="." unique_id=378540673 instance=ExtResource("2_0xm2m")]
 layout_mode = 1
@@ -35,8 +38,9 @@ canvas_item_default_texture_filter = 3
 oversampling_override = 1.0
 title = "Menu"
 size = Vector2i(220, 320)
-visible = true
 always_on_top = true
+content_scale_mode = 1
+content_scale_aspect = 4
 item_count = 3
 item_0/text = "Open file"
 item_0/id = 0
