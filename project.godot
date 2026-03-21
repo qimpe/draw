@@ -19,12 +19,22 @@ config/icon="res://icon.svg"
 
 BrushStrokeTexture="*uid://p62m3w8ratkj"
 Types="*uid://2gsdqhk7mt5w"
+EventBus="*uid://bfeprryg67sb"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [file_customization]
 
 folder_colors={
 "res://assets/": "red"
 }
+
+[input_devices]
+
+pointing/emulate_mouse_from_touch=false
 
 [physics]
 

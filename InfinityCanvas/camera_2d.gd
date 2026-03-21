@@ -47,7 +47,6 @@ func touch_event(event):
 		# At least one fing drag
 		if _touch_events.size() == 1:
 			_move_camera(event.relative)
-			get_viewport().set_input_as_handled()
 		if _touch_events.size() == 2:
 			var events = []
 			for key in _touch_events.keys():
@@ -77,7 +76,7 @@ func _input(event):
 	touch_event(event)
 
 
-func tool_event(event:InputEvent):
+func handle_input(event:InputEvent):
 	"""Handle the data of touch event"""
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
@@ -94,13 +93,14 @@ func tool_event(event:InputEvent):
 	if event is InputEventMouseMotion:
 		if _can_move:
 			_move_camera(event.relative)
-		
+			get_viewport().set_input_as_handled()
 
 
 # -------------------------------------------------------------------------------------------------
 func _move_camera(pan: Vector2) -> void:
 	offset -= pan * (1.0 / _current_zoom_level)
 	position_changed.emit(offset)
+	get_viewport().set_input_as_handled()
 
 # -------------------------------------------------------------------------------------------------
 func _do_zoom_scroll(step: int) -> void:

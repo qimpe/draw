@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cdyx568q08ehl"]
 
+[ext_resource type="Script" uid="uid://bx1w4oyjcr0go" path="res://UI/components/size_slider.gd" id="1_ve73d"]
+
 [node name="Sliders" type="Control" unique_id=788542311]
 layout_mode = 3
 anchors_preset = 9
@@ -15,13 +17,7 @@ offset_right = 16.0
 offset_bottom = -333.0
 grow_vertical = 2
 min_value = 0.1
+max_value = 50.0
+step = 0.1
 value = 0.1
-
-[node name="SizeSlider" type="VSlider" parent="." unique_id=59854399]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_top = 322.0
-offset_right = 16.0
-offset_bottom = -11.0
-grow_vertical = 2
+script = ExtResource("1_ve73d")
