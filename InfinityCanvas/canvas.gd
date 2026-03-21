@@ -15,16 +15,17 @@ const BRUSH_STROKE = preload("res://BrushStroke/BrushStroke.tscn")
 var active_tool=null
 
 func _ready():
+	EventBus.eraser_tool_active.connect(func():active_tool=eraser_tool)
+	EventBus.brush_tool_active.connect(func():active_tool=brush_tool)
+	EventBus.open_file.connect(load_from_json)
+	EventBus.save_file.connect(save_to_json)
 	add_child(brush_tool)
 	add_child(eraser_tool)
 	active_tool=brush_tool
 
 
-
 func _gui_input(event: InputEvent) -> void:
 	_process_event(event)
-
-
 
 func _process_event(event: InputEvent) -> void:
 	# 1. Сначала даем камере обработать ввод (зум, панорамирование)
@@ -58,6 +59,62 @@ func _process_event(event: InputEvent) -> void:
 
 
 
+func save_to_json(path: String):
+	var data = {
+		"strokes": []
+	}
+	
+	# Собираем данные из всех узлов-штрихов
+	for stroke in strokes.get_children():
+		if stroke is BrushStroke:
+			var stroke_data = {
+				"points": [],
+				"color": stroke.line.default_color.to_html(),
+				"width": stroke.line.width
+			}
+			# Превращаем Vector2 в массив [x, y]
+			for p in stroke.points:
+				stroke_data["points"].append([p.x, p.y])
+			
+			data["strokes"].append(stroke_data)
+	
+	# Записываем в файл
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	if file:
+		var json_string = JSON.stringify(data)
+		file.store_string(json_string)
+		file.close()
+		print("Файл сохранен: ", path)
+
+func load_from_json(path: String):
+	if not FileAccess.file_exists(path):
+		return
+		
+	var file = FileAccess.open(path, FileAccess.READ)
+	var json_string = file.get_as_text()
+	file.close()
+	
+	var data = JSON.parse_string(json_string)
+	if data == null:
+		return
+	
+	# Очищаем текущий холст перед загрузкой
+	for child in strokes.get_children():
+		child.queue_free()
+		
+	# Восстанавливаем штрихи
+	for s_data in data["strokes"]:
+		var new_stroke = BRUSH_STROKE.instantiate()
+		strokes.add_child(new_stroke)
+		
+		# Настраиваем параметры
+		new_stroke.line.default_color = Color(s_data["color"])
+		new_stroke.line.width = s_data["width"]
+		
+		# Заполняем точки
+		for p_array in s_data["points"]:
+			var pos = Vector2(p_array[0], p_array[1])
+			new_stroke.add_point(pos) # Не забудь, что add_point должен добавлять и в массив, и в Line2D
 
 
 """func _process_event(event: InputEvent) -> void:

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bxuatp00wptt3"]
 
+[ext_resource type="Script" uid="uid://6jm2k4nqqf5w" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c3y6bo2uxjlwb" path="res://InfinityCanvas/InfinityCanvas.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://pp88ak3kt0i0" path="res://UI/components/Panel.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cdyx568q08ehl" path="res://UI/components/Sliders.tscn" id="3_h2yge"]
@@ -11,15 +12,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1bvp3")
 
 [node name="Canvas" parent="." unique_id=1010356068 instance=ExtResource("1_ig7tw")]
-layout_mode = 0
+layout_mode = 1
 
 [node name="Panel" parent="." unique_id=378540673 instance=ExtResource("2_0xm2m")]
 layout_mode = 1
-anchors_preset = 10
-anchor_bottom = 0.0
-offset_bottom = 40.0
+anchor_bottom = 0.07300001
+offset_right = -0.00012207031
+offset_bottom = 0.15999603
 
 [node name="Sliders" parent="." unique_id=788542311 instance=ExtResource("3_h2yge")]
 layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.028
+offset_top = 85.0
+offset_right = -21.760002
+
+[node name="PopupMenu" type="PopupMenu" parent="." unique_id=1676383761]
+canvas_item_default_texture_filter = 3
+oversampling_override = 1.0
+title = "Menu"
+size = Vector2i(220, 320)
+visible = true
+always_on_top = true
+item_count = 3
+item_0/text = "Open file"
+item_0/id = 0
+item_1/text = "Save file"
+item_1/id = 1
+item_2/text = "Settings"
+item_2/id = 2
+
+[node name="PopupPanel" type="PopupPanel" parent="." unique_id=825024597]
+oversampling_override = 1.0
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=1176276342]
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+access = 2
+
+[connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]

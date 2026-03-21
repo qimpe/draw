@@ -1,30 +1,47 @@
 extends Control
-"""extends Node
 
-@export var stroke_scene: PackedScene # Сюда перетащи BrushStroke.tscn в инспекторе
-var current_stroke: BrushStroke = null
+# Используем Enum вместо словаря — это стандарт Godot для типизации
+enum MenuID { OPEN_FILE = 0, SAVE_FILE = 1 }
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton or event is InputEventScreenTouch:
-		if event.is_pressed():
-			#var global_pos = get_global_mouse_position() 
-			start_drawing(global_pos)
-		else:
-			stop_drawing()
+@onready var popup_menu: PopupMenu = $PopupMenu
+@onready var file_dialog: FileDialog = $FileDialog
 
-	if (event is InputEventMouseMotion or event is InputEventScreenDrag) and current_stroke:
-		#current_stroke.add_point(get_global_mouse_position())
+func _ready() -> void:
+	_configure_file_dialog()
+	# Подключаем сигналы
+	EventBus.menu_button_pressed.connect(toggle_menu)
+	popup_menu.id_pressed.connect(_on_menu_item_selected)
+	file_dialog.file_selected.connect(_on_file_path_confirmed)
 
+# Выносим настройки в отдельный метод, чтобы не забивать _ready
+func _configure_file_dialog() -> void:
+	file_dialog.access = FileDialog.ACCESS_FILESYSTEM
+	file_dialog.use_native_dialog = true # Использует системное окно Windows/macOS/Android
+	file_dialog.add_filter("*.json", "JSON Canvas Data")
 
+# Публичные методы (интерфейс взаимодействия)
+func toggle_menu() -> void:
+	popup_menu.visible = !popup_menu.visible
+	if popup_menu.visible:
+		popup_menu.popup_centered()
 
+# Обработка выбора в меню
+func _on_menu_item_selected(id: int) -> void:
+	match id:
+		MenuID.OPEN_FILE:
+			_setup_and_show_dialog(FileDialog.FILE_MODE_OPEN_FILE, "Открыть рисунок")
+		MenuID.SAVE_FILE:
+			_setup_and_show_dialog(FileDialog.FILE_MODE_SAVE_FILE, "Сохранить рисунок")
 
-func start_drawing(pos:Vector2)->void:
-	current_stroke = stroke_scene.instantiate()
-	current_stroke.color = Color.BLACK # Или любой другой
-	current_stroke.size = 5.0
-	add_child(current_stroke)
-	current_stroke.add_point(pos)
+# Универсальный метод для настройки окна файла
+func _setup_and_show_dialog(mode: FileDialog.FileMode, title: String) -> void:
+	file_dialog.file_mode = mode
+	file_dialog.title = title
+	file_dialog.popup_centered_ratio(1) # Окно на 70% экрана — удобно для планшета
 
-func stop_drawing():
-	current_stroke=null
-"""
+# Передача пути в систему
+func _on_file_path_confirmed(path: String) -> void:
+	if file_dialog.file_mode == FileDialog.FILE_MODE_OPEN_FILE:
+		EventBus.open_file.emit(path)
+	else:
+		EventBus.save_file.emit(path)

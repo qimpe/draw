@@ -16,10 +16,11 @@ func _ready() -> void:
 	line.joint_mode = Line2D.LINE_JOINT_ROUND
 	line.begin_cap_mode = Line2D.LINE_CAP_ROUND
 	line.end_cap_mode = Line2D.LINE_CAP_ROUND
-	line.width = size
 	line.texture_mode = Line2D.LINE_TEXTURE_STRETCH
+	line.round_precision = 32
+	line.antialiased = true
+	line.width = size
 	line.texture = BrushStrokeTexture.texture
-	line.round_precision=16
 	line.clear_points()
 
 

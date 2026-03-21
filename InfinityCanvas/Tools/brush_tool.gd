@@ -2,7 +2,7 @@ extends Node
 class_name BrushTool
 
 const STROKE_SCENE: PackedScene = preload("res://BrushStroke/BrushStroke.tscn")
-const DISTANCE_THRESHOLD = 5.0 
+const DISTANCE_THRESHOLD = 1.0 
 
 var is_drawing = false
 var current_stroke: BrushStroke = null
@@ -52,7 +52,13 @@ func _process_drawing(pos: Vector2):
 	if not current_stroke: return
 	
 	if pos.distance_to(last_pos) > DISTANCE_THRESHOLD:
+		# Сглаживание: берем среднее между прошлой точкой и текущей
+		# Это уберет "острые" углы при написании букв
+		var mid_point = last_pos.lerp(pos, 0.5)
+		
+		current_stroke.add_point(mid_point)
 		current_stroke.add_point(pos)
+		
 		last_pos = pos
 
 func _end_stroke():

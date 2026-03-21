@@ -6,10 +6,10 @@ extends Node2D
 @export var camera_path: NodePath
 
 
-var _pattern: int = Types.GridPattern.DOTS
+var _pattern: int = 0 # Замени на Types.GridPattern.DOTS
 var _camera: Camera2D
 var _grid_size := 25
-var _grid_color: Color
+var _grid_color: Color = Color(0.5, 0.5, 0.5, 0.5)
 
 
 
