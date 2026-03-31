@@ -12,6 +12,7 @@ shader_parameter/zoom = 1.0
 shader_parameter/grid_size = 50.0
 shader_parameter/dot_color = Color(0.5, 0.5, 0.5, 1)
 shader_parameter/dot_radius = 0.08
+shader_parameter/background_color = Color(0.01, 0.03, 0.1, 1)
 
 [node name="Canvas" type="SubViewportContainer" unique_id=1010356068]
 anchors_preset = 15

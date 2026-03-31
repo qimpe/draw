@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://h14flsfv6i8d"]
+
+[ext_resource type="Theme" uid="uid://fo4qjt6mwdgo" path="res://theme.tres" id="1_jqeas"]
+[ext_resource type="Script" uid="uid://sjcns71xxjb" path="res://UI/components/panel.gd" id="2_jns7k"]
+[ext_resource type="Texture2D" uid="uid://cuiiex4lmejgj" path="res://assets/icons/brush.svg" id="3_4hlq7"]
+[ext_resource type="Script" uid="uid://bx1w4oyjcr0go" path="res://UI/components/size_slider.gd" id="4_m86ww"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqeas"]
+bg_color = Color(0.02745098, 0.050980393, 0.12156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6255971, 0.6255971, 0.6255971, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_0o5cu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jpayw"]
+load_path = "res://.godot/imported/eraser.svg-6a3e51f9ddc485901c0aa04826d953f5.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0o5cu"]
+bg_color = Color(1, 1, 1, 0.2784314)
+draw_center = false
+border_width_right = 60
+border_color = Color(1, 1, 1, 0.050980393)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tsvct"]
+load_path = "res://.godot/imported/undo.svg-8e39613a5ed2624e54d767b85e6b7dc0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n01r4"]
+load_path = "res://.godot/imported/redo.svg-3f978da4a242cfabee4c9d3cfb8b5e18.ctex"
+
+[node name="SidePanel" type="Panel" unique_id=1690366722]
+anchors_preset = -1
+anchor_left = 0.011000001
+anchor_top = 0.18333334
+anchor_right = 0.048
+anchor_bottom = 0.80200005
+offset_left = -0.12000084
+offset_top = -2.0
+offset_right = -0.16000366
+offset_bottom = -0.16003418
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("1_jqeas")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqeas")
+script = ExtResource("2_jns7k")
+metadata/_edit_use_anchors_ = true
+
+[node name="VSlider" type="VSlider" parent="." unique_id=1165656399]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.97200006
+anchor_top = 0.006
+anchor_right = 1.3520001
+anchor_bottom = 1.0
+offset_left = -0.012001038
+offset_top = -0.01999998
+offset_right = 0.007987976
+offset_bottom = -4.0
+theme = ExtResource("1_jqeas")
+script = ExtResource("4_m86ww")
+
+[node name="MenuBar" type="MenuBar" parent="." unique_id=589128068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuBar" unique_id=1935103293]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MenuBar/MarginContainer" unique_id=164720783]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="BrushButton" type="Button" parent="MenuBar/MarginContainer/HBoxContainer" unique_id=1721870981]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/icon_normal_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+toggle_mode = true
+button_group = SubResource("ButtonGroup_0o5cu")
+icon = ExtResource("3_4hlq7")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="EraserButton" type="Button" parent="MenuBar/MarginContainer/HBoxContainer" unique_id=610237679]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/icon_normal_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+toggle_mode = true
+button_group = SubResource("ButtonGroup_0o5cu")
+icon = SubResource("CompressedTexture2D_jpayw")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="VSeparator" type="VSeparator" parent="MenuBar/MarginContainer/HBoxContainer" unique_id=1623287579]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_0o5cu")
+
+[node name="UndoButton" type="Button" parent="MenuBar/MarginContainer/HBoxContainer" unique_id=982395468]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/icon_normal_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+button_group = SubResource("ButtonGroup_0o5cu")
+icon = SubResource("CompressedTexture2D_tsvct")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="RedoButton" type="Button" parent="MenuBar/MarginContainer/HBoxContainer" unique_id=383508243]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/icon_normal_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+button_group = SubResource("ButtonGroup_0o5cu")
+icon = SubResource("CompressedTexture2D_n01r4")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="MenuBar/MarginContainer/HBoxContainer/BrushButton" to="." method="_on_brush_button_pressed"]
+[connection signal="pressed" from="MenuBar/MarginContainer/HBoxContainer/EraserButton" to="." method="_on_eraser_button_pressed"]
+[connection signal="pressed" from="MenuBar/MarginContainer/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]
+[connection signal="pressed" from="MenuBar/MarginContainer/HBoxContainer/RedoButton" to="." method="_on_redo_button_pressed"]

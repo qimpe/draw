@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://051fhoj83q2f" path="res://BrushStroke/brush_stroke.gd" id="1_xjopp"]
 
+[sub_resource type="Curve" id="Curve_xjopp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="BrushStroke" type="Node2D" unique_id=980785867]
 script = ExtResource("1_xjopp")
+curve = SubResource("Curve_xjopp")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1044071404]
 points = PackedVector2Array(-19, -6)

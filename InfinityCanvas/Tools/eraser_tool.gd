@@ -1,8 +1,11 @@
 extends Node
 class_name EraserTool
 
-var is_erasing := false
-var eraser_radius := 20.0
+## Инструмент ластика для удаления штрихов.
+## Поддерживает ввод с мыши и touch-экранов.
+
+var is_erasing: bool = false
+var eraser_radius: float = 20.0
 
 func handle_input(event: InputEvent, camera: Camera2D, strokes_container: Node2D) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -10,34 +13,38 @@ func handle_input(event: InputEvent, camera: Camera2D, strokes_container: Node2D
 		if is_erasing:
 			_check_collision(event.position, camera, strokes_container)
 
-	if event is InputEventMouseMotion and is_erasing:
+	elif event is InputEventMouseMotion and is_erasing:
 		_check_collision(event.position, camera, strokes_container)
 
-func _check_collision(mouse_pos: Vector2, camera: Camera2D, strokes_container: Node2D) -> void:
-	# Переводим мышь в мировые координаты
-	var world_mouse_pos = camera.get_canvas_transform().affine_inverse() * mouse_pos
-	
-	# Проходим по всем нарисованным штрихам
-	for stroke in strokes_container.get_children():
-		if stroke is BrushStroke:
-			if _is_mouse_over_stroke(stroke, world_mouse_pos):
-				stroke.queue_free() # Удаляем штрих целиком
+	elif event is InputEventScreenTouch and event.pressed:
+		is_erasing = true
+		_check_collision(event.position, camera, strokes_container)
 
-func _is_mouse_over_stroke(stroke: BrushStroke, mouse_world_pos: Vector2) -> bool:
-	# Если у штриха меньше 2 точек, его нельзя проверить как сегмент
+	elif event is InputEventScreenTouch and not event.pressed:
+		is_erasing = false
+
+	elif event is InputEventScreenDrag and is_erasing:
+		_check_collision(event.position, camera, strokes_container)
+
+func _check_collision(screen_pos: Vector2, camera: Camera2D, strokes_container: Node2D) -> void:
+	var world_pos: Vector2 = camera.get_canvas_transform().affine_inverse() * screen_pos
+	
+	for stroke in strokes_container.get_children():
+		if stroke is BrushStroke and _is_stroke_in_eraser_range(stroke, world_pos):
+			stroke.queue_free()
+
+func _is_stroke_in_eraser_range(stroke: BrushStroke, world_pos: Vector2) -> bool:
 	if stroke.points.size() < 2:
 		return false
 	
-	# Проверяем каждый сегмент линии (от точки А до точки Б)
 	for i in range(stroke.points.size() - 1):
-		var p1 = stroke.points[i]
-		var p2 = stroke.points[i+1]
-		
-		# Главная математическая проверка:
-		# Пересекает ли отрезок (p1, p2) круг ластика?
-		# Возвращает -1, если не пересекает, или 0-1, если пересекает.
-		var intersect = Geometry2D.segment_intersects_circle(p1, p2, mouse_world_pos, eraser_radius)
-		
-		if intersect >= 0:
+		var intersection: float = Geometry2D.segment_intersects_circle(
+			stroke.points[i],
+			stroke.points[i + 1],
+			world_pos,
+			eraser_radius
+		)
+		if intersection >= 0:
 			return true
+	
 	return false

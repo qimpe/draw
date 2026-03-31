@@ -3,8 +3,9 @@ shader_type canvas_item;
 uniform vec2 camera_offset;
 uniform float zoom = 1.0;
 uniform float grid_size = 50.0;
-uniform vec4 dot_color : source_color = vec4(0.5, 0.5, 0.5, 1.0);
+uniform vec4 dot_color : source_color = vec4(1.0, 1.0, 1.0, 0.5);
 uniform float dot_radius = 0.1;
+uniform vec4 background_color : source_color = vec4(0.01, 0.03, 0.1, 1.0); // Цвет фона
 
 void fragment() {
     // Получаем реальный размер экрана из встроенной переменной
@@ -25,5 +26,5 @@ void fragment() {
     // Коэффициент 0.05 / zoom нужен, чтобы края точек не "лесенкой" при зуме.
     float mask = smoothstep(dot_radius, dot_radius - (0.05 / zoom), dist);
     
-    COLOR = vec4(dot_color.rgb, mask * dot_color.a);
+    COLOR = mix(background_color, dot_color, mask);
 }
