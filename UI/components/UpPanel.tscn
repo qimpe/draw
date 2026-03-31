@@ -82,6 +82,34 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_i2ddy")
 
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1281449394]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8442708
+anchor_right = 1.0005208
+anchor_bottom = 0.96288514
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=347946048]
+layout_mode = 2
+size_flags_horizontal = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer" unique_id=2071107182]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Project -"
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=547896386]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+
 [connection signal="pressed" from="MenuBar/MarginContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="color_changed" from="MenuBar/MarginContainer/HBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
 [connection signal="pressed" from="MenuBar/MarginContainer/HBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_pressed"]

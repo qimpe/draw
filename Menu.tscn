@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://xv6507c06d36"]
+
+[ext_resource type="Script" uid="uid://cfqfji1x1vnqi" path="res://Projects/project_manager_ui.gd" id="1_uubjt"]
+[ext_resource type="PackedScene" uid="uid://bxuatp00wptt3" path="res://main.tscn" id="2_5yleq"]
+[ext_resource type="Theme" uid="uid://fo4qjt6mwdgo" path="res://theme.tres" id="3_ylpcl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yleq"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Menu" type="Control" unique_id=1010055763]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=68966368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.007843138, 0.03137255, 0.09803922, 1)
+
+[node name="ProjectManager" type="Control" parent="." unique_id=1826216902]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uubjt")
+_draw_scene = ExtResource("2_5yleq")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ProjectManager" unique_id=427844661]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -33.0
+offset_right = 84.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreateProjectButton" type="Button" parent="ProjectManager/VBoxContainer" unique_id=1740839177]
+layout_mode = 2
+text = "Create"
+
+[node name="OpenProjectButton" type="Button" parent="ProjectManager/VBoxContainer" unique_id=2002549273]
+layout_mode = 2
+text = "Open"
+
+[node name="ProjectCard" type="Control" parent="." unique_id=45467828]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ylpcl")
+
+[node name="Control" type="Control" parent="ProjectCard" unique_id=717834467]
+layout_mode = 1
+anchor_left = 0.23854166
+anchor_top = 0.36574075
+anchor_right = 0.74010414
+anchor_bottom = 0.60462964
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="ProjectCard/Control" unique_id=802725974]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5yleq")
+
+[node name="MarginContainer2" type="MarginContainer" parent="ProjectCard/Control" unique_id=1829327332]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.16666667
+offset_bottom = 23.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ProjectCard/Control/MarginContainer2" unique_id=1533788312]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Название "
+
+[node name="MarginContainer" type="MarginContainer" parent="ProjectCard/Control" unique_id=1589870161]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="LineEdit" type="LineEdit" parent="ProjectCard/Control/MarginContainer" unique_id=534926757]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="ProjectCard/Control" unique_id=142556975]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.771
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 13.081985
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProjectCard/Control/MarginContainer3" unique_id=1260336026]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+
+[node name="CreateButton" type="Button" parent="ProjectCard/Control/MarginContainer3/HBoxContainer" unique_id=2134133920]
+layout_mode = 2
+text = "Create"
+
+[node name="CancelButton" type="Button" parent="ProjectCard/Control/MarginContainer3/HBoxContainer" unique_id=1205245001]
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="pressed" from="ProjectManager/VBoxContainer/CreateProjectButton" to="ProjectManager" method="_on_open_create_project_button_pressed"]
+[connection signal="pressed" from="ProjectCard/Control/MarginContainer3/HBoxContainer/CreateButton" to="ProjectManager" method="_on_create_button_pressed"]
+[connection signal="pressed" from="ProjectCard/Control/MarginContainer3/HBoxContainer/CancelButton" to="ProjectManager" method="_on_cancel_create_project_button_pressed"]

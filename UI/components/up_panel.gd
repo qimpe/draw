@@ -1,6 +1,13 @@
 extends Panel
 
 
+@onready var project_label:Label= $MarginContainer/HBoxContainer/Label
+
+
+
+func _ready() -> void:
+	if ProjectManager.active_project: #!
+		project_label.text=ProjectManager.active_project.metadata.get("name")
 
 func _on_menu_button_pressed() -> void:
 	EventBus.menu_button_pressed.emit()

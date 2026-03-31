@@ -57,7 +57,7 @@ func _get_pressure(event: InputEvent) -> float:
 		
 	if event is InputEventMouseButton:
 		return 1.0
-		
+	return 1.0
 	#var last_pressure=current_stroke.pressures[-1]
 	#var actual_pressure = pressure if pressure > 0 else 1.0
 	#var mid_pressure: float = (actual_pressure + last_pressure) / 2.0
