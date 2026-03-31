@@ -10,6 +10,7 @@ signal brush_tool_active
 signal menu_button_pressed
 signal open_file(path: String)
 signal save_file(path: String)
+signal save_project_button_pressed()
 signal stroke_ended(stroke: BrushStroke)
 signal redo()
 signal undo()

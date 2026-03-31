@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bugth1vynh2j8"]
+
+[ext_resource type="Script" uid="uid://citq458djw0mu" path="res://project_manager.gd" id="1_x13an"]
+[ext_resource type="PackedScene" uid="uid://bxuatp00wptt3" path="res://main.tscn" id="2_1x3pn"]
+
+[node name="ProjectManager" type="Node" unique_id=295955061]
+script = ExtResource("1_x13an")
+_draw_scene = ExtResource("2_1x3pn")
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=1434797782]
+oversampling_override = 1.0

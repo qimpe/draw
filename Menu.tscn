@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bxuatp00wptt3" path="res://main.tscn" id="2_5yleq"]
 [ext_resource type="Theme" uid="uid://fo4qjt6mwdgo" path="res://theme.tres" id="3_ylpcl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yleq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylpcl"]
+bg_color = Color(0.01238107, 1.2032688e-08, 0.29482853, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_ylpcl")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=68966368]
 layout_mode = 1
@@ -39,24 +41,24 @@ _draw_scene = ExtResource("2_5yleq")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="ProjectManager" unique_id=427844661]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -33.0
-offset_right = 84.0
-offset_bottom = 33.0
+anchors_preset = -1
+anchor_left = 0.47552082
+anchor_top = 0.46944445
+anchor_right = 0.55260414
+anchor_bottom = 0.51203704
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 50
+metadata/_edit_use_anchors_ = true
 
 [node name="CreateProjectButton" type="Button" parent="ProjectManager/VBoxContainer" unique_id=1740839177]
 layout_mode = 2
+theme = ExtResource("3_ylpcl")
 text = "Create"
 
 [node name="OpenProjectButton" type="Button" parent="ProjectManager/VBoxContainer" unique_id=2002549273]
 layout_mode = 2
+theme = ExtResource("3_ylpcl")
 text = "Open"
 
 [node name="ProjectCard" type="Control" parent="." unique_id=45467828]
@@ -87,7 +89,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5yleq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ylpcl")
 
 [node name="MarginContainer2" type="MarginContainer" parent="ProjectCard/Control" unique_id=1829327332]
 layout_mode = 1
@@ -142,8 +144,10 @@ text = "Create"
 
 [node name="CancelButton" type="Button" parent="ProjectCard/Control/MarginContainer3/HBoxContainer" unique_id=1205245001]
 layout_mode = 2
+theme = ExtResource("3_ylpcl")
 text = "Cancel"
 
 [connection signal="pressed" from="ProjectManager/VBoxContainer/CreateProjectButton" to="ProjectManager" method="_on_open_create_project_button_pressed"]
+[connection signal="pressed" from="ProjectManager/VBoxContainer/OpenProjectButton" to="ProjectManager" method="_on_open_project_button_pressed"]
 [connection signal="pressed" from="ProjectCard/Control/MarginContainer3/HBoxContainer/CreateButton" to="ProjectManager" method="_on_create_button_pressed"]
 [connection signal="pressed" from="ProjectCard/Control/MarginContainer3/HBoxContainer/CancelButton" to="ProjectManager" method="_on_cancel_create_project_button_pressed"]

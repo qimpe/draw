@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 BrushStrokeTexture="*uid://p62m3w8ratkj"
 Types="*uid://2gsdqhk7mt5w"
 EventBus="*uid://bfeprryg67sb"
-ProjectManager="*uid://citq458djw0mu"
+ProjectManager="*uid://bugth1vynh2j8"
 
 [display]
 

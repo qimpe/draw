@@ -29,7 +29,7 @@ func handle_input(event: InputEvent, strokes_node: Node, camera: Camera2D) -> vo
 		return
 
 	var world_pos: Vector2 = camera.get_canvas_transform().affine_inverse() * event.position
-	var pressure: float = _get_pressure(event)
+	var pressure: float = 1 #_get_pressure(event)
 
 	if _is_start_input(event):
 		_start_stroke(world_pos, strokes_node, pressure)

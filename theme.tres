@@ -3,6 +3,15 @@
 [ext_resource type="FontFile" uid="uid://biuqu7nwy1k2q" path="res://assets/fonts/Farabee Semibold.ttf" id="1_cjfk0"]
 [ext_resource type="FontFile" uid="uid://7gtou8tq3rsr" path="res://assets/fonts/Farabee Black.ttf" id="1_e1x85"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjfk0"]
+bg_color = Color(0.01943308, 3.970787e-06, 0.33478883, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
 [sub_resource type="DPITexture" id="DPITexture_cjfk0"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"gray\" d=\"M0 0v8h8V0zm8 8v8h8V8z\"/><path fill=\"#fff\" d=\"M8 0v8h8V0zm0 8H0v8h8z\"/></svg>
 "
@@ -76,12 +85,35 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdt2l"]
+bg_color = Color(0.01238107, 1.2032688e-08, 0.29482853, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yin2u"]
+bg_color = Color(0.0502802, 1.0348112e-05, 0.5285219, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 30.0
+expand_margin_bottom = 30.0
+
 [resource]
 default_font = ExtResource("1_e1x85")
 Button/colors/icon_hover_color = Color(0.23679447, 0.38415992, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(0.23529412, 0.38431373, 1, 1)
 Button/colors/icon_normal_color = Color(0, 0, 0, 1)
 Button/colors/icon_pressed_color = Color(0.23529412, 0.38431373, 1, 1)
 Button/icons/icon = null
+Button/styles/focus = SubResource("StyleBoxFlat_cjfk0")
+Button/styles/hover = SubResource("StyleBoxFlat_cjfk0")
+Button/styles/normal = SubResource("StyleBoxFlat_cjfk0")
+Button/styles/pressed = SubResource("StyleBoxFlat_cjfk0")
 ColorPickerButton/colors/font_color = Color(1, 1, 1, 1)
 ColorPickerButton/colors/font_disabled_color = Color(0.9, 0.9, 0.9, 0.3)
 ColorPickerButton/colors/font_focus_color = Color(1, 1, 1, 1)
@@ -98,3 +130,5 @@ ColorPickerButton/styles/hover = SubResource("StyleBoxFlat_05tig")
 ColorPickerButton/styles/normal = SubResource("StyleBoxFlat_1rmny")
 ColorPickerButton/styles/pressed = SubResource("StyleBoxFlat_mihib")
 Label/fonts/font = ExtResource("1_cjfk0")
+Panel/styles/panel = SubResource("StyleBoxFlat_wdt2l")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_yin2u")

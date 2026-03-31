@@ -3,7 +3,6 @@
 [ext_resource type="Theme" uid="uid://fo4qjt6mwdgo" path="res://theme.tres" id="1_jqeas"]
 [ext_resource type="Script" uid="uid://sjcns71xxjb" path="res://UI/components/panel.gd" id="2_jns7k"]
 [ext_resource type="Texture2D" uid="uid://cuiiex4lmejgj" path="res://assets/icons/brush.svg" id="3_4hlq7"]
-[ext_resource type="Script" uid="uid://bx1w4oyjcr0go" path="res://UI/components/size_slider.gd" id="4_m86ww"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqeas"]
 bg_color = Color(0.02745098, 0.050980393, 0.12156863, 1)
@@ -51,20 +50,6 @@ theme = ExtResource("1_jqeas")
 theme_override_styles/panel = SubResource("StyleBoxFlat_jqeas")
 script = ExtResource("2_jns7k")
 metadata/_edit_use_anchors_ = true
-
-[node name="VSlider" type="VSlider" parent="." unique_id=1165656399]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.97200006
-anchor_top = 0.006
-anchor_right = 1.3520001
-anchor_bottom = 1.0
-offset_left = -0.012001038
-offset_top = -0.01999998
-offset_right = 0.007987976
-offset_bottom = -4.0
-theme = ExtResource("1_jqeas")
-script = ExtResource("4_m86ww")
 
 [node name="MenuBar" type="MenuBar" parent="." unique_id=589128068]
 layout_mode = 1

@@ -21,6 +21,7 @@ func _connect_signals() -> void:
 	EventBus.menu_button_pressed.connect(toggle_menu)
 	popup_menu.id_pressed.connect(_on_menu_item_selected)
 	file_dialog.file_selected.connect(_on_file_path_confirmed)
+	
 
 func toggle_menu() -> void:
 	popup_menu.visible = not popup_menu.visible

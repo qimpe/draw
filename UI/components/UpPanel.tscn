@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dyi0ku8703jij" path="res://UI/components/up_panel.gd" id="1_4m7or"]
 [ext_resource type="Script" uid="uid://c8v2se3tey7ac" path="res://UI/components/color_picker_button.gd" id="1_i2ddy"]
 [ext_resource type="Texture2D" uid="uid://ijalf1n4lk4u" path="res://assets/icons/color.svg" id="3_jxxd6"]
+[ext_resource type="Theme" uid="uid://fo4qjt6mwdgo" path="res://theme.tres" id="4_sexpy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sexpy"]
 bg_color = Color(0.02745098, 0.050980393, 0.12156863, 1)
@@ -16,6 +17,12 @@ load_path = "res://.godot/imported/menu.svg-59db10be0368b42c7e33f9f74c374b3a.cte
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m7or"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0t21"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_687c4"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Panel" type="Panel" unique_id=378540673]
 anchors_preset = -1
@@ -82,6 +89,24 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_i2ddy")
 
+[node name="HSlider" type="HSlider" parent="MenuBar" unique_id=1430058821]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23489584
+anchor_top = 0.57523006
+anchor_right = 0.375
+anchor_bottom = 0.97499
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_m0t21")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_687c4")
+max_value = 50.0
+rounded = true
+scrollable = false
+ticks_on_borders = true
+ticks_position = 3
+metadata/_edit_use_anchors_ = true
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1281449394]
 layout_mode = 1
 anchors_preset = -1
@@ -98,7 +123,13 @@ theme_override_constants/margin_bottom = 8
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=347946048]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_constants/separation = 29
 metadata/_edit_use_anchors_ = true
+
+[node name="SaveButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=2034099173]
+layout_mode = 2
+theme = ExtResource("4_sexpy")
+text = "Save"
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer" unique_id=2071107182]
 layout_mode = 2
@@ -113,3 +144,5 @@ theme_override_font_sizes/font_size = 32
 [connection signal="pressed" from="MenuBar/MarginContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="color_changed" from="MenuBar/MarginContainer/HBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
 [connection signal="pressed" from="MenuBar/MarginContainer/HBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_pressed"]
+[connection signal="value_changed" from="MenuBar/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
